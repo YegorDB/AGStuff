@@ -1,2 +1,1 @@
-# AGStuff
-Abstract game stuff
+# Abstract games stuff
