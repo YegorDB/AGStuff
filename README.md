@@ -1,0 +1,2 @@
+# AGStuff
+Abstract game stuff
