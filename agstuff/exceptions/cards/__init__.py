@@ -13,9 +13,9 @@
 # limitations under the License.
 
 
-from card import CardWeightSymbolError, CardSuitSymbolError
-from deck import DeckCountTypeError, DeckCountNumberError
-from cards import CardsStringTypeError, CardsCardTypeError
+from agstuff.exceptions.cards.card import CardWeightSymbolError, CardSuitSymbolError
+from agstuff.exceptions.cards.deck import DeckCountTypeError, DeckCountNumberError
+from agstuff.exceptions.cards.cards import CardsStringTypeError, CardsCardTypeError
 
 
 __all__ = [

@@ -18,7 +18,8 @@
 import random
 
 from agstuff.exceptions.cards import (
-    CardWeightSymbolError, CardSuitSymbolError, DeckCountTypeError, DeckCountNumberError,
+    CardWeightSymbolError, CardSuitSymbolError,
+    DeckCountTypeError, DeckCountNumberError,
     CardsStringTypeError, CardsCardTypeError
 )
 from agstuff.validators.cards import CardSymbolValidator
@@ -237,7 +238,7 @@ class Cards:
     Also cards could be set from deck after initialization
     """
 
-    def __init__(self, max_count, cards_string=None, cards=None):
+    def __init__(self, cards_string=None, cards=None, max_count=52):
         self.max_count = max_count
         if cards_string:
             cards_string_type = type(cards_string)

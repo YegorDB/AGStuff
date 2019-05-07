@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-from card import CardSymbolValidator
+from agstuff.validators.cards.card import CardSymbolValidator
 
 
 __all__ = ['CardSymbolValidator']
