@@ -178,7 +178,7 @@ There are 13 weights (Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack
 52
 ```
 
-##### Cards(cards_string=None, cards=None, max_count=7)
+##### Cards(cards_string=None, cards=None, max_count=52)
 
 Several cards.
 
