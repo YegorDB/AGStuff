@@ -1,4 +1,4 @@
-# Copyright 2019 Yegor Bitensky
+# Copyright 2019-2021 Yegor Bitensky
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='AGStuff',
-    version='1.0.0',
+    version='1.0.1',
     description="Abstract games stuff",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -38,6 +38,8 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
     ],
     keywords='cards',

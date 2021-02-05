@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Yegor Bitensky
+# Copyright 2018-2021 Yegor Bitensky
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -59,6 +59,11 @@ class TestCard:
         assert Card("9") > Card("3")
         assert Card("Ac") == Card("c")
         assert Card("5d") != Card("s")
+
+    def test_hash(self):
+        assert hash(Card("Kd")) == 132
+        assert hash(Card("T")) == 100
+        assert hash(Card("s")) == 4
 
 
 class TestDeck:

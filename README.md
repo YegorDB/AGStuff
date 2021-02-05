@@ -30,7 +30,7 @@ Suit symbols: `'c'` (clubs), `'d'` (diamonds), `'h'` (hearts), `'s'` (spades).
 >>> from agstuff.cards.core import Card
 
 >>> card = Card('As')
->>> card
+>>> print(card)
 A♠
 >>> card.name
 'Ace of spades'
@@ -148,7 +148,7 @@ There are 13 weights (Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack
 >>> from agstuff.cards.core import Deck
 
 >>> deck = Deck()
->>> deck
+>>> print(deck)
 [
     2♣, 2♦, 2♥, 2♠,
     3♣, 3♦, 3♥, 3♠,
@@ -169,7 +169,7 @@ There are 13 weights (Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack
 >>> cards = deck.push_cards(3)
 >>> cards # generator of 3 random cards
 <generator object Deck.push_cards at 0x7f5b1d52e228>
->>> list(cards)
+>>> print(list(cards))
 [6♦, 4♣, J♠]
 >>> deck.size
 49
@@ -201,13 +201,13 @@ Cards could be set from deck
 49
 >>> cards.size
 3
->>> cards
+>>> print(cards)
 [4♣, 5♠, 7♦]
 
 >>> cards.pull(deck, 2) # add 2 more cards
 >>> cards.size
 5
->>> cards
+>>> print(cards)
 [4♣, 5♠, 7♦, 9♥, J♠]
 
 >>> cards.clean()
@@ -223,7 +223,7 @@ Also cards could be set by cards string
 >>> from agstuff.cards.core import Cards
 
 >>> cards = Cards("2c/3c/4c/5c/6c")
->>> cards
+>>> print(cards)
 [2♣, 3♣, 4♣, 5♣, 6♣]
 ```
 
@@ -233,7 +233,7 @@ Also cards could be set by iterable of Card instanses
 >>> from agstuff.cards.core import Card, Cards
 
 >>> cards = Cards(cards=[Card("Jd"), Card("2s"), Card("6c")])
->>> cards
+>>> print(cards)
 [2♠, 6♣, J♦]
 ```
 
@@ -259,10 +259,10 @@ By default Cards can contain no more than 52 items, and it could be changed
 >>> cards1 = Cards(max_count=7)
 >>> deck = Deck()
 >>> cards1.pull(deck, 10)
->>> cards1
+>>> print(cards1)
 [5♣, 3♥, Q♠, J♣, J♦, 8♠, 9♣]
 
 >>> cards2 = Cards("2s/3s/4s/5s/6s/7s/8s/9s/Ts/Js/Qs/Ks/As", max_count=5)
->>> cards2
+>>> print(cards2)
 [2♠, 3♠, 4♠, 5♠, 6♠]
 ```

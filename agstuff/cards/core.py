@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Yegor Bitensky
+# Copyright 2018-2021 Yegor Bitensky
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -91,7 +91,7 @@ class Card:
 
         @classmethod
         def numbers(cls):
-            return {cls.symbols[i]: i for i in range(14)}
+            return {cls.symbols[i]: i + 1 for i in range(14)}
 
         @classmethod
         def names(cls):
@@ -129,7 +129,7 @@ class Card:
             return self.pretty_symbol
 
         def __repr__(self):
-            return self.pretty_symbol
+            return self.symbol
 
         def __eq__(self, other):
             return self.symbol == other.symbol
@@ -139,7 +139,7 @@ class Card:
 
         @classmethod
         def numbers(cls):
-            return {cls.symbols[i]: i for i in range(4)}
+            return {cls.symbols[i]: i + 1 for i in range(4)}
 
         @classmethod
         def names(cls):
@@ -175,7 +175,7 @@ class Card:
         return f"{repr(self.weight or 'X')}{repr(self.suit or 'x')}"
 
     def __hash__(self):
-        return self.weight.number * 10 + self.suit.number
+        return 10 * (self.weight.number if self.weight else 0) + (self.suit.number if self.suit else 0)
 
     def __lt__(self, other):
         return self.weight < other.weight
