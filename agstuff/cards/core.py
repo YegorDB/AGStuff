@@ -91,7 +91,7 @@ class Card:
 
         @classmethod
         def numbers(cls):
-            return {cls.symbols[i]: i + 1 for i in range(14)}
+            return {cls.symbols[i]: i for i in range(14)}
 
         @classmethod
         def names(cls):
@@ -139,7 +139,7 @@ class Card:
 
         @classmethod
         def numbers(cls):
-            return {cls.symbols[i]: i + 1 for i in range(4)}
+            return {cls.symbols[i]: i for i in range(4)}
 
         @classmethod
         def names(cls):
@@ -169,13 +169,19 @@ class Card:
                 self.name = self.suit.name
 
     def __str__(self):
-        return f"{str(self.weight or 'X')}{str(self.suit or 'x')}"
+        weight = str(self.weight) if self.weight else 'X'
+        suit = str(self.suit) if self.suit else 'x'
+        return f"{weight}{suit}"
 
     def __repr__(self):
-        return f"{repr(self.weight or 'X')}{repr(self.suit or 'x')}"
+        weight = repr(self.weight) if self.weight else 'X'
+        suit = repr(self.suit) if self.suit else 'x'
+        return f"{weight}{suit}"
 
     def __hash__(self):
-        return 10 * (self.weight.number if self.weight else 0) + (self.suit.number if self.suit else 0)
+        waight_number = (self.weight.number + 1 if self.weight else 0)
+        suit_number = (self.suit.number + 1 if self.suit else 0)
+        return 10 * waight_number + suit_number
 
     def __lt__(self, other):
         return self.weight < other.weight
