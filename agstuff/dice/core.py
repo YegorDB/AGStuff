@@ -29,6 +29,27 @@ from agstuff.exceptions.dice.core import (
 
 
 class Dice:
+    """
+    Customizable dice.
+
+    Could be created by faces count or faces items.
+
+    Faces count is an integer greater or equal MIN_FACES_COUNT.
+    If dice is created by faces count its faces will be integers from 1 to faces count number.
+    ```python
+    >>> dice = Dice(faces_count=6)
+    >>> print(dice.items)
+    [1, 2, 3, 4, 5, 6]
+    ```
+
+    Faces items is an iterable contains comparable and addible to each other objects.
+    ```python
+    >>> dice = Dice(faces_items='QWERTY')
+    >>> print(dice.items)
+    ['Q', 'W', 'E', 'R', 'T', 'Y']
+    ```
+    """
+
     MIN_FACES_COUNT = 2
 
     def __init__(self, faces_count=None, faces_items=None):
@@ -48,11 +69,41 @@ class Dice:
         else:
             raise DiceEmptyInialItemsError()
 
+        self._value = None
+        self.rolling()
+
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __ne__(self, other):
+        return self.value != other.value
+
+    def __add__(self, other):
+        if isinstance(other, Dice):
+            return self.value + other.value
+        else:
+            return self.value + other
+
+    @property
+    def value(self):
+        return self._value
+
     def rolling(self):
-        return random.choice(self.items)
+        self._value = random.choice(self.items)
+        return self._value
 
 
 class DiceBox:
+    """
+    Multiple dices handler.
+    """
+
     def __init__(self):
         self.items = []
 

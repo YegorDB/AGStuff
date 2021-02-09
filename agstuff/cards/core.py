@@ -46,7 +46,6 @@ class Card:
     Symbols in 1st positional argument are ignored since 3rd one.
     """
 
-    in_hand = False
 
     class Weight:
         """
@@ -100,6 +99,7 @@ class Card:
                 'Ace/Two/Three/Four/Five/Six/Seven/Eight/Nine/Ten/Jack/Queen/King/Ace'.split('/')
             ))
 
+
     class Suit:
         """
         Card suit.
@@ -149,6 +149,7 @@ class Card:
         def pretty_symbol(self):
             return self.pretty_symbols[self.symbol]
 
+
     def __init__(self, sign):
         # standard card with weight and suit
         if len(sign[:2]) == 2:
@@ -167,6 +168,7 @@ class Card:
                 self.weight = None
                 self.suit = self.Suit(sign)
                 self.name = self.suit.name
+        self.in_hand = False
 
     def __str__(self):
         weight = str(self.weight) if self.weight else 'X'
