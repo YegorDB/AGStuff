@@ -72,6 +72,12 @@ class Dice:
         self._value = None
         self.rolling()
 
+    def __str__(self):
+        return f'{self._value} of {self.items}'
+
+    def __repr__(self):
+        return f'{self._value} of {self.items}'
+
     def __lt__(self, other):
         return self.value < other.value
 
@@ -85,10 +91,11 @@ class Dice:
         return self.value != other.value
 
     def __add__(self, other):
-        if isinstance(other, Dice):
+        if not other:
+            return self.value
+        elif isinstance(other, Dice):
             return self.value + other.value
-        else:
-            return self.value + other
+        return self.value + other
 
     @property
     def value(self):
@@ -113,4 +120,8 @@ class DiceBox:
         self.items.append(dice)
 
     def rolling(self):
-        return [dice.rolling() for dice in self.items]
+        result = None
+        for dice in self.items:
+            dice.rolling()
+            result = dice + result
+        return result
