@@ -129,7 +129,7 @@ class Card:
             return self.pretty_symbol
 
         def __repr__(self):
-            return self.symbol
+            return self.pretty_symbol
 
         def __eq__(self, other):
             return self.symbol == other.symbol

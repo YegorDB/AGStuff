@@ -12,7 +12,7 @@ Some card from standard 52 cards deck.
 >>> from agstuff.cards.core import Card
 
 >>> card = Card('As')
->>> print(card)
+>>> card
 A♠
 >>> card.name
 'Ace of spades'
@@ -154,7 +154,7 @@ Standard 52 cards deck.
 >>> from agstuff.cards.core import Deck
 
 >>> deck = Deck()
->>> print(deck)
+>>> deck
 [
     2♣, 2♦, 2♥, 2♠,
     3♣, 3♦, 3♥, 3♠,
@@ -175,7 +175,7 @@ Standard 52 cards deck.
 >>> cards = deck.push_cards(3)
 >>> cards # generator of 3 random cards
 <generator object Deck.push_cards at 0x7f5b1d52e228>
->>> print(list(cards))
+>>> list(cards)
 [6♦, 4♣, J♠]
 >>> deck.size
 49
@@ -194,7 +194,7 @@ Several cards.
 >>> from agstuff.cards.core import Cards
 
 >>> cards = Cards("2c/3c/4c/5c/6c")
->>> print(cards)
+>>> cards
 [2♣, 3♣, 4♣, 5♣, 6♣]
 ```
 
@@ -204,7 +204,7 @@ Several cards.
 >>> from agstuff.cards.core import Card, Cards
 
 >>> cards = Cards(cards=[Card("Jd"), Card("2s"), Card("6c")])
->>> print(cards)
+>>> cards
 [2♠, 6♣, J♦]
 ```
 
@@ -227,13 +227,13 @@ Several cards.
 49
 >>> cards.size
 3
->>> print(cards)
+>>> cards
 [4♣, 5♠, 7♦]
 
 >>> cards.pull(deck, 2) # add 2 more cards
 >>> cards.size
 5
->>> print(cards)
+>>> cards
 [4♣, 5♠, 7♦, 9♥, J♠]
 
 >>> cards.clean()
@@ -267,10 +267,10 @@ False
 >>> cards1 = Cards(max_count=7)
 >>> deck = Deck()
 >>> cards1.pull(deck, 10)
->>> print(cards1)
+>>> cards1
 [5♣, 3♥, Q♠, J♣, J♦, 8♠, 9♣]
 
 >>> cards2 = Cards("2s/3s/4s/5s/6s/7s/8s/9s/Ts/Js/Qs/Ks/As", max_count=5)
->>> print(cards2)
+>>> cards2
 [2♠, 3♠, 4♠, 5♠, 6♠]
 ```
