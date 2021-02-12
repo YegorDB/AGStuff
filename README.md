@@ -52,7 +52,7 @@ True
 >>> dice1 = Dice(faces_count=6)
 >>> dice1
 1 of [1, 2, 3, 4, 5, 6]
->>> dice2 = Dice(faces_count=6)
+>>> dice2 = Dice(6)
 >>> dice2
 6 of [1, 2, 3, 4, 5, 6]
 >>> dice1.rolling()
@@ -85,4 +85,8 @@ Y of ['Q', 'W', 'E', 'R', 'T', 'Y']
 5 of [1, 2, 3, 4, 5, 6]
 >>> dice2
 3 of [1, 2, 3, 4, 5, 6]
+>>> dice1.value
+5
+>>> dice2.value
+3
 ```
