@@ -20,7 +20,7 @@ import random
 
 from collections.abc import Iterable
 
-from agstuff.exceptions.dice.core import (
+from agstuff.exceptions.dices.core import (
     DiceEmptyInialItemsError,
     DiceWrongFacesCountTypeError, DiceWrongFacesCountError,
     DiceWrongFacesItemsTypeError, DiceWrongFacesItemsCountError,
