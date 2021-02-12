@@ -1,10 +1,7 @@
 # Cards
 
 
-## Core
-
-
-### Card(sign)
+## Card(sign)
 
 Some card from standard 52 cards deck.
 
@@ -18,12 +15,12 @@ A♠
 'Ace of spades'
 ```
 
-#### Card sign
+### Card sign
 Whether two symbols (1st symbol is card weight, 2nd symbol is card suit) or single one (weight or suit).
 
 > Sign symbols are ignored since 3rd one.
 
-##### Card weight symbols
+#### Card weight symbols
 - Deuce - `'2'`
 - Three - `'3'`
 - Four - `'4'`
@@ -38,13 +35,13 @@ Whether two symbols (1st symbol is card weight, 2nd symbol is card suit) or sing
 - King - `'K'`
 - Ace - `'A'`
 
-##### Card suit symbols
+#### Card suit symbols
 - Сlubs - `'c'`
 - Diamonds - `'d'`
 - Hearts - `'h'`
 - Spades - `'s'`
 
-#### Card comparison
+### Card comparison
 
 ```python
 >>> from agstuff.cards.core import Card
@@ -72,7 +69,7 @@ False
 True
 ```
 
-#### Card weights/suits directly comparison
+### Card weights/suits directly comparison
 
 ```python
 >>> from agstuff.cards.core import Card
@@ -108,7 +105,7 @@ True
 False
 ```
 
-#### Abstract cards
+### Abstract cards
 
 ```python
 >>> from agstuff.cards.core import Card
@@ -146,7 +143,7 @@ False
 True
 ```
 
-### Deck()
+## Deck()
 
 Standard 52 cards deck.
 
@@ -184,11 +181,11 @@ Standard 52 cards deck.
 52
 ```
 
-### Cards(cards_string=None, cards=None, max_count=52)
+## Cards(cards_string=None, cards=None, max_count=52)
 
 Several cards.
 
-#### Cards creation by cards string
+### Cards creation by cards string
 
 ```python
 >>> from agstuff.cards.core import Cards
@@ -198,7 +195,7 @@ Several cards.
 [2♣, 3♣, 4♣, 5♣, 6♣]
 ```
 
-#### Cards creation by iterable of Card instanses
+### Cards creation by iterable of Card instanses
 
 ```python
 >>> from agstuff.cards.core import Card, Cards
@@ -208,7 +205,7 @@ Several cards.
 [2♠, 6♣, J♦]
 ```
 
-#### Cards fill from deck
+### Cards fill from deck
 
 ```python
 >>> from agstuff.cards.core import Deck, Cards
@@ -243,7 +240,7 @@ Several cards.
 []
 ```
 
-#### Cards inclusion
+### Cards inclusion
 
 ```python
 >>> from agstuff.cards.core import Card, Cards
@@ -257,7 +254,7 @@ True
 False
 ```
 
-#### Cards items max count
+### Cards items max count
 
 > By default Cards items max count is 52
 

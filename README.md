@@ -17,10 +17,10 @@
 >>> from agstuff.cards.core import Card, Cards, Deck
 >>>
 >>> card1 = Card('As')
->>> print(card1)
+>>> card1
 A♠
 >>> card2 = Card('8d')
->>> print(card2)
+>>> card2
 8♦
 >>> card1 > card2
 True
@@ -42,4 +42,47 @@ True
 >>> cards.pull(deck, 5)
 >>> cards
 [9♥, 2♦, 8♣, 6♠, K♥]
+```
+
+### Dices
+
+```python
+>>> from agstuff.dices.core import Dice, DiceBox
+>>>
+>>> dice1 = Dice(faces_count=6)
+>>> dice1
+1 of [1, 2, 3, 4, 5, 6]
+>>> dice2 = Dice(faces_count=6)
+>>> dice2
+6 of [1, 2, 3, 4, 5, 6]
+>>> dice1.rolling()
+5
+>>> dice1
+5 of [1, 2, 3, 4, 5, 6]
+>>> dice2.rolling()
+1
+>>> dice2
+1 of [1, 2, 3, 4, 5, 6]
+>>> dice1 + dice2
+6
+>>> dice1 > dice2
+True
+>>>
+>>> dice3 = Dice(faces_items=('Q', 'W', 'E', 'R', 'T', 'Y'))
+>>> dice3
+E of ['Q', 'W', 'E', 'R', 'T', 'Y']
+>>> dice3.rolling()
+'Y'
+>>> dice3
+Y of ['Q', 'W', 'E', 'R', 'T', 'Y']
+>>>
+>>> dice_box = DiceBox()
+>>> dice_box.add(dice1)
+>>> dice_box.add(dice2)
+>>> dice_box.rolling()
+8
+>>> dice1
+5 of [1, 2, 3, 4, 5, 6]
+>>> dice2
+3 of [1, 2, 3, 4, 5, 6]
 ```
