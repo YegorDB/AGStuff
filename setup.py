@@ -22,7 +22,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='AGStuff',
-    version='1.0.2',
+    version='1.1.0',
     description="Abstract games stuff",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -42,7 +42,7 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
     ],
-    keywords='cards',
+    keywords='cards dices',
     packages=find_packages(exclude=['tests*', 'examples*']),
     python_requires='>=3.6',
 )

@@ -1,4 +1,4 @@
 # Documentation
 
-- [Cards](https://github.com/YegorDB/AGStuff/docs/cards)
-- [Dices](https://github.com/YegorDB/AGStuff/docs/dices)
+- [Cards](https://github.com/YegorDB/AGStuff/tree/master/docs/cards)
+- [Dices](https://github.com/YegorDB/AGStuff/tree/master/docs/dices)
