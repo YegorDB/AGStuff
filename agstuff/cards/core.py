@@ -46,7 +46,6 @@ class Card:
     Symbols in 1st positional argument are ignored since 3rd one.
     """
 
-    in_hand = False
 
     class Weight:
         """
@@ -62,14 +61,17 @@ class Card:
         Five looks like Weight('5').
         """
 
-        symbols = '123456789TJQKA'
-        real_symbols = '23456789TJQKA'
+        SYMBOLS = '123456789TJQKA'
+        REAL_SYMBOLS = '23456789TJQKA'
+        NAMES = 'Ace/Two/Three/Four/Five/Six/Seven/Eight/Nine/Ten/Jack/Queen/King/Ace'.split('/')
+        NUMBERS_BY_SYMBOLS = {s: i for i, s in enumerate(SYMBOLS)}
+        NAMES_BY_SYMBOLS = dict(zip(SYMBOLS, NAMES))
 
-        @CardSymbolValidator(symbols, CardWeightSymbolError)
+        @CardSymbolValidator(SYMBOLS, CardWeightSymbolError)
         def __init__(self, symbol):
             self.symbol = symbol
-            self.number = self.numbers()[symbol]
-            self.name = self.names()[symbol]
+            self.number = self.NUMBERS_BY_SYMBOLS[symbol]
+            self.name = self.NAMES_BY_SYMBOLS[symbol]
 
         def __str__(self):
             return self.symbol
@@ -89,16 +91,6 @@ class Card:
         def __ne__(self, other):
             return self.number != other.number
 
-        @classmethod
-        def numbers(cls):
-            return {cls.symbols[i]: i for i in range(14)}
-
-        @classmethod
-        def names(cls):
-            return dict(zip(
-                cls.symbols,
-                'Ace/Two/Three/Four/Five/Six/Seven/Eight/Nine/Ten/Jack/Queen/King/Ace'.split('/')
-            ))
 
     class Suit:
         """
@@ -111,25 +103,28 @@ class Card:
         Spades looks like Suit('s').
         """
 
-        symbols = 'cdhs'
-        pretty_symbols = {
+        SYMBOLS = 'cdhs'
+        PRETTY_SYMBOLS = {
             'c': '\u2663',
             'd': '\u2666',
             'h': '\u2665',
             's': '\u2660'
         }
+        NAMES = 'clubs/diamonds/hearts/spades'.split('/')
+        NUMBERS_BY_SYMBOLS = {s: i for i, s in enumerate(SYMBOLS)}
+        NAMES_BY_SYMBOLS = dict(zip(SYMBOLS, NAMES))
 
-        @CardSymbolValidator(symbols, CardSuitSymbolError)
+        @CardSymbolValidator(SYMBOLS, CardSuitSymbolError)
         def __init__(self, symbol):
             self.symbol = symbol
-            self.number = self.numbers()[symbol]
-            self.name = self.names()[symbol]
+            self.number = self.NUMBERS_BY_SYMBOLS[symbol]
+            self.name = self.NAMES_BY_SYMBOLS[symbol]
 
         def __str__(self):
             return self.pretty_symbol
 
         def __repr__(self):
-            return self.symbol
+            return self.pretty_symbol
 
         def __eq__(self, other):
             return self.symbol == other.symbol
@@ -137,17 +132,10 @@ class Card:
         def __ne__(self, other):
             return self.symbol != other.symbol
 
-        @classmethod
-        def numbers(cls):
-            return {cls.symbols[i]: i for i in range(4)}
-
-        @classmethod
-        def names(cls):
-            return dict(zip(cls.symbols, 'clubs/diamonds/hearts/spades'.split('/')))
-
         @property
         def pretty_symbol(self):
-            return self.pretty_symbols[self.symbol]
+            return self.PRETTY_SYMBOLS[self.symbol]
+
 
     def __init__(self, sign):
         # standard card with weight and suit
@@ -167,6 +155,7 @@ class Card:
                 self.weight = None
                 self.suit = self.Suit(sign)
                 self.name = self.suit.name
+        self.in_hand = False
 
     def __str__(self):
         weight = str(self.weight) if self.weight else 'X'
@@ -207,7 +196,6 @@ class Deck:
 
     def __init__(self, card=None):
         self.cards = []
-        self._card = card or Card
         self.refresh()
 
     def __str__(self):
@@ -230,7 +218,7 @@ class Deck:
             yield self.cards.pop(random.choice(range(len(self.cards))))
 
     def refresh(self):
-        self.cards = [self._card(f'{w}{s}') for w in self._card.Weight.real_symbols for s in self._card.Suit.symbols]
+        self.cards = [Card(f'{w}{s}') for w in Card.Weight.REAL_SYMBOLS for s in Card.Suit.SYMBOLS]
 
 
 class Cards:
@@ -278,7 +266,7 @@ class Cards:
         max_to_add = self.max_count - self.size
         count_to_add = max_to_add if count > max_to_add else count
         if count_to_add > 0:
-            self.items += list(deck.push_cards(count_to_add))
+            self.items.extend(deck.push_cards(count_to_add))
 
     def clean(self):
         self.items = []
