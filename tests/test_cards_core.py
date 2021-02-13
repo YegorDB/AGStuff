@@ -23,12 +23,6 @@ from agstuff.exceptions.cards import (
 )
 
 
-def get_parameters(func):
-    def wrap(self, values):
-        return func(self, **values)
-    return wrap
-
-
 class TestCard:
     def test_validation(self):
         with pytest.raises(CardWeightSymbolError):
